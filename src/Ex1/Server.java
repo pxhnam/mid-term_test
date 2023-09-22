@@ -25,10 +25,10 @@ public class Server {
                 BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                 PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
 
-                String n = in.readLine();
+                String str = in.readLine();
                 int odd = 0;
                 int even = 0;
-                for (char c : n.toCharArray()) {
+                for (char c : str.toCharArray()) {
                     if ((c - '0') % 2 == 0) {
                         even++;
                     } else {

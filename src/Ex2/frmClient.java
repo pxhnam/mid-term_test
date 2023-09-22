@@ -116,9 +116,12 @@ public class frmClient extends javax.swing.JFrame {
             Socket socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-
-            out.println(txtN.getText());
             String[] strArray = txtArray.getText().split(" ");
+            if (txtN.getText() == null || txtN.getText().isEmpty()) {
+                out.println(strArray.length);
+            } else {
+                out.println(txtN.getText());
+            }
 
             for (String c : strArray) {
                 out.println(c);

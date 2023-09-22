@@ -33,16 +33,24 @@ public class Server {
                     arr[i] = Integer.parseInt(in.readLine());
                 }
                 int index = Integer.parseInt(in.readLine());
-                int[] arr1 = Arrays.copyOfRange(arr, index, arr.length);
-                int[] arr2 = Arrays.copyOf(arr, index);
-                System.arraycopy(arr1, 0, arr, 0, arr1.length);
-                System.arraycopy(arr2, 0, arr, arr1.length, arr2.length);
-                out.println(Arrays.toString(arr));
+                out.println(Arrays.toString(moveLeft(arr, index)));
 
                 clientSocket.close();
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static int[] moveLeft(int[] Array, int index) {
+        int len = Array.length;
+        int[] res = new int[len];
+        for (int i = 0; i < len - index; i++) {
+            res[i] = Array[index + i];
+        }
+        for (int i = 0; i < index; i++) {
+            res[len - index + i] = Array[i];
+        }
+        return res;
     }
 }

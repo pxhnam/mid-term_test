@@ -28,14 +28,26 @@ public class Server {
                 for (int i = 0; i < n; i++) {
                     arr[i] = Integer.parseInt(in.readLine());
                 }
-                Arrays.sort(arr);
+                Sort(arr);
                 out.println(arr[0]);
                 out.println(arr[1]);
-                System.out.println(arr[0] + " - " + arr[1]);
                 clientSocket.close();
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void Sort(int[] Array) {
+        int temp;
+        for (int i = 0; i < Array.length; i++) {
+            for (int j = 0; j < Array.length; j++) {
+                if (Array[i] < Array[j]) {
+                    temp = Array[i];
+                    Array[i] = Array[j];
+                    Array[j] = temp;
+                }
+            }
         }
     }
 }

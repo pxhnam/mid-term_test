@@ -19,14 +19,14 @@ import javax.swing.UIManager;
  * @author admin
  */
 public class frmClient extends javax.swing.JFrame {
-    
+
     private static final String SERVER_ADDRESS = "localhost";
     private static final int SERVER_PORT = 9999;
-    
+
     public frmClient() {
         initComponents();
         this.setLocationRelativeTo(null);
-        
+
     }
 
     /**
@@ -127,24 +127,27 @@ public class frmClient extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
-        
         try {
             Socket socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
-            System.out.println("Start: ");
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-            out.println(txtN.getText());
-            for (String c : txtArray.getText().split(" ")) {
+            String[] strArray = txtArray.getText().split(" ");
+            if (txtN.getText() == null || txtN.getText().isEmpty()) {
+                out.println(strArray.length);
+            } else {
+                out.println(txtN.getText());
+            }
+            for (String c : strArray) {
                 out.println(c);
             }
             out.println(txtIndex.getText());
             txtResult.setText(in.readLine());
-            
+
             socket.close();
         } catch (IOException ex) {
             Logger.getLogger(frmClient.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_btnSendActionPerformed
 
     /**

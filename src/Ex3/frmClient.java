@@ -52,7 +52,7 @@ public class frmClient extends javax.swing.JFrame {
 
         txtResult.setEnabled(false);
 
-        btnSend.setText("SNED");
+        btnSend.setText("SEND");
         btnSend.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSendActionPerformed(evt);
