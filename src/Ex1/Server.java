@@ -14,7 +14,7 @@ public class Server {
     private static final int PORT = 9999;
 
     public static void main(String[] args) throws IOException {
-        new frmClient().show();
+        new frmClient().setVisible(true);
         try {
             ServerSocket serverSocket = new ServerSocket(PORT);
             System.out.println("Server listening on port " + PORT);

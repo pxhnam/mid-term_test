@@ -16,7 +16,7 @@ public class Server {
     private static final int PORT = 9999;
 
     public static void main(String[] args) throws IOException {
-        new frmClient().show();
+        new frmClient().setVisible(true);
         try {
             ServerSocket serverSocket = new ServerSocket(PORT);
             System.out.println("Server listening on port " + PORT);
@@ -33,7 +33,7 @@ public class Server {
                     arr[i] = Integer.parseInt(in.readLine());
                 }
                 int index = Integer.parseInt(in.readLine());
-                out.println(Arrays.toString(moveLeft(arr, index)));
+                out.println(Arrays.toString(moveElement(arr, index)));
 
                 clientSocket.close();
             }
@@ -42,7 +42,7 @@ public class Server {
         }
     }
 
-    public static int[] moveLeft(int[] Array, int index) {
+    public static int[] moveElement(int[] Array, int index) {
         int len = Array.length;
         int[] res = new int[len];
         for (int i = 0; i < len - index; i++) {
