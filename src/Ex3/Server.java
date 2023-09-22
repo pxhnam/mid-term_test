@@ -24,15 +24,20 @@ public class Server {
                 PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
                 String name = in.readLine();
                 name = name.trim();
-                String result = "";
+                String eChar = "";
                 String[] words = name.split(" ");
                 for (String word : words) {
                     if (word.isEmpty()) {
                         continue;
                     }
-                    result += word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase() + " ";
+                    char[] chars = word.toCharArray();
+                    eChar += Character.toUpperCase(chars[0]);
+                    for (int i = 1; i < chars.length; i++) {
+                        eChar += Character.toLowerCase(chars[i]);
+                    }
+                    eChar += " ";
                 }
-                out.println(result.trim());
+                out.println(eChar.trim());
 
                 clientSocket.close();
             }
